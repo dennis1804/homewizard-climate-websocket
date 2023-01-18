@@ -51,6 +51,25 @@ class HomeWizardClimateApi:
             )
             raise InvalidHomewizardAuth()
 
+    def all_devices(self) -> list[HomeWizardClimateDevice]:
+        resp = requests.get(
+            os.path.join(API_V1_PATH, API_DEVICES),
+            auth=(self._username, self._password),
+        )
+        if (
+            resp.status_code == 200
+            and resp.headers.get("content-type") == "application/json"
+            and "devices" in resp.json()
+        ):
+            devices_list = list(
+                map(
+                    HomeWizardClimateDevice.from_dict,
+                    # Filter only known device types in: HomeWizardClimateDeviceType
+                    resp.json().get("devices"),
+                )
+            )
+            return devices_list
+
     def get_devices(self) -> list[HomeWizardClimateDevice]:
         resp = requests.get(
             os.path.join(API_V1_PATH, API_DEVICES),
