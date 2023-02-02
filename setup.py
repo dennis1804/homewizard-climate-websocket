@@ -54,8 +54,8 @@ extra_requirements = {
 }
 
 setup(
-    author="Mepla",
-    author_email="soheil.nasirian@gmail.com",
+    author="Dennis1804",
+    author_email="dennis@de-jong.frl",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
@@ -77,17 +77,17 @@ setup(
     long_description=readme,
     long_description_content_type="text/markdown",
     include_package_data=True,
-    keywords="homewizard_climate_websocket",
-    name="homewizard_climate_websocket",
+    keywords="homewizard_climate_ws",
+    name="homewizard_climate_ws",
     packages=find_packages(exclude=["tests", "*.tests", "*.tests.*"]),
     python_requires=">=3.7",
     setup_requires=setup_requirements,
-    test_suite="homewizard_climate_websocket/tests",
+    test_suite="homewizard_climate_ws/tests",
     tests_require=test_requirements,
     extras_require=extra_requirements,
-    url="https://github.com/mepla/homewizard_climate_websocket",
+    url="https://github.com/dennis1804/homewizard-climate-websocket",
     # Do not edit this string manually, always use bumpversion
     # Details in CONTRIBUTING.rst
-    version="0.0.8",
+    version="0.0.11",
     zip_safe=False,
 )

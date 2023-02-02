@@ -1,8 +1,8 @@
 import json
 from enum import Enum
 
-from homewizard_climate_websocket.api.api import HomeWizardClimateApi
-from homewizard_climate_websocket.model.climate_device import HomeWizardClimateDevice
+from homewizard_climate_ws.api.api import HomeWizardClimateApi
+from homewizard_climate_ws.model.climate_device import HomeWizardClimateDevice
 
 
 class HomeWizardClimateWSPayloads:

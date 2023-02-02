@@ -70,7 +70,7 @@ instance/
 
 # Sphinx documentation
 docs/_build/
-docs/homewizard_climate_websocket.*rst
+docs/homewizard_climate_ws.*rst
 
 # PyBuilder
 target/

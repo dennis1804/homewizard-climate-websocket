@@ -3,8 +3,8 @@ import os
 
 import requests
 
-from homewizard_climate_websocket.const import API_LOGIN, API_V1_PATH, API_DEVICES
-from homewizard_climate_websocket.model.climate_device import (
+from homewizard_climate_ws.const import API_LOGIN, API_V1_PATH, API_DEVICES
+from homewizard_climate_ws.model.climate_device import (
     HomeWizardClimateDevice,
     HomeWizardClimateDeviceType,
 )
@@ -39,7 +39,7 @@ class HomeWizardClimateApi:
 
         if (
             resp.status_code == 200
-            and "application/json" in resp.headers.get("content-type")
+            and resp.headers.get("content-type") == "application/json"
             and "token" in resp.json()
         ):
             self._token = resp.json().get("token")
@@ -58,7 +58,7 @@ class HomeWizardClimateApi:
         )
         if (
             resp.status_code == 200
-            and "application/json" in resp.headers.get("content-type")
+            and resp.headers.get("content-type") == "application/json"
             and "devices" in resp.json()
         ):
             supported_device_types = [t.value for t in HomeWizardClimateDeviceType]
