@@ -12,6 +12,7 @@ class HomeWizardClimateDeviceType(Enum):
     HEATERFAN = "heaterfan"
     INFRAREDHEATER = "infraredheater"
     HEATER = "heater"
+    FAN = "fan"
 
 @dataclass_json
 @dataclass

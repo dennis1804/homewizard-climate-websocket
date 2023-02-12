@@ -88,6 +88,6 @@ setup(
     url="https://github.com/dennis1804/homewizard-climate-websocket",
     # Do not edit this string manually, always use bumpversion
     # Details in CONTRIBUTING.rst
-    version="0.0.11",
+    version="0.0.14",
     zip_safe=False,
 )
