@@ -20,5 +20,5 @@ class HomeWizardClimateDevice:
     name: Optional[str]
     identifier: str
     grants: Optional[list]
-    type: HomeWizardClimateDeviceType
+    type: Optional[HomeWizardClimateDeviceType]
     endpoint: Optional[str]
