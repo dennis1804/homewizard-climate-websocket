@@ -123,6 +123,16 @@ class HomeWizardClimateWebSocket:
     def set_target_temperature(self, temp: int) -> None:
         self._send_message(self._payloads.set_target_temperature(temp))
 
+
+    def set_mode(self, mode: str) -> None:
+        self._send_message(self._payloads.set_mode(mode))
+
+    def set_timer(self, timer: int) -> None:
+        self._send_message(self._payloads.set_timer(timer))
+
+    def set_speed(self, speed: int) -> None:
+        self._send_message(self._payloads.set_speed(speed))
+
     def turn_on_heater(self) -> None:
         self._send_message(self._payloads.set_heater())
 
