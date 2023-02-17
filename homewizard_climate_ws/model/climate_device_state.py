@@ -13,6 +13,7 @@ class HomeWizardClimateDeviceState:
     fan_speed: int
     oscillate: bool
     timer: int
+    speed: int
     error: list[str]
     heat_status: str
     vent_heat: bool
@@ -33,6 +34,7 @@ def default_state():
             "fan_speed": 0,
             "oscillate": False,
             "timer": 0,
+            "speed": 1,
             "ext_mode": [],
             "heat_status": "idle",
             "vent_heat": False,

@@ -51,7 +51,7 @@ class HomeWizardClimateApi:
             )
             raise InvalidHomewizardAuth()
 
-    def get_devices(self) -> list[HomeWizardClimateDevice]:
+    def get_devices(self) -> list:
         resp = requests.get(
             os.path.join(API_V1_PATH, API_DEVICES),
             auth=(self._username, self._password),
@@ -71,10 +71,7 @@ class HomeWizardClimateApi:
                 map(
                     HomeWizardClimateDevice.from_dict,
                     # Filter only known device types in: HomeWizardClimateDeviceType
-                    filter(
-                        lambda x: x.get("type") in supported_device_types,
-                        resp.json().get("devices"),
-                    ),
+                    resp.json().get("devices"),
                 )
             )
             _LOGGER.debug(

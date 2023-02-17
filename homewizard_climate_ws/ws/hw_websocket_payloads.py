@@ -93,6 +93,39 @@ class HomeWizardClimateWSPayloads:
                 ],
             }
         )
+    
+    def set_speed(self, speed: int) -> str:
+        return json.dumps(
+            {
+                "device": self._device.identifier,
+                "type": "json_patch",
+                "patch": [
+                    {"op": "replace", "path": "/state/speed", "value": speed}
+                ],
+            }
+        )
+
+    def set_timer(self, timer: int) -> str:
+        return json.dumps(
+            {
+                "device": self._device.identifier,
+                "type": "json_patch",
+                "patch": [
+                    {"op": "replace", "path": "/state/timer", "value": timer}
+                ],
+            }
+        )
+
+    def set_mode(self, mode: str) -> str:
+        return json.dumps(
+            {
+                "device": self._device.identifier,
+                "type": "json_patch",
+                "patch": [
+                    {"op": "replace", "path": "/state/mode", "value": mode}
+                ],
+            }
+        )
 
     def turn_on_oscillate(self) -> str:
         return json.dumps(
