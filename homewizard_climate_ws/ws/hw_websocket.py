@@ -211,8 +211,13 @@ class HomeWizardClimateWebSocket:
                 self._on_initialized(self._device)
 
         self._LOGGER.debug(f"Received full device update: {received_message}")
+        state = received_message.get("state")
+        # Fill-in missing state entries using default values
+        for k, v in default_state().to_dict().items():
+            if k not in state:
+                state[k] = v
         self._update_last_state(
-            HomeWizardClimateDeviceState.from_dict(received_message.get("state"))
+            HomeWizardClimateDeviceState.from_dict(state)
         )
 
     def _handle_state_update(self, received_message: dict) -> None:
