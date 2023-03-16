@@ -2,8 +2,10 @@ import json
 from enum import Enum
 
 from homewizard_climate_ws.api.api import HomeWizardClimateApi
-from homewizard_climate_ws.model.climate_device import HomeWizardClimateDevice
-
+from homewizard_climate_ws.model.climate_device import (
+        HomeWizardClimateDevice,
+        HomeWizardClimateDeviceType
+    )
 
 class HomeWizardClimateWSPayloads:
     def __init__(self, api: HomeWizardClimateApi, device: HomeWizardClimateDevice):
@@ -128,21 +130,28 @@ class HomeWizardClimateWSPayloads:
         )
 
     def turn_on_oscillate(self) -> str:
+        path = "/state/oscillate"
+        print(self._device.type)
+        if self._device.type == HomeWizardClimateDeviceType.FAN:
+            path = "/state/oscillation"
         return json.dumps(
             {
                 "device": self._device.identifier,
                 "type": "json_patch",
-                "patch": [{"op": "replace", "path": "/state/oscillate", "value": True}],
+                "patch": [{"op": "replace", "path": path, "value": True}],
             }
         )
 
     def turn_off_oscillate(self) -> str:
+        path = "/state/oscillate"
+        if self._device.type == HomeWizardClimateDeviceType.FAN:
+            path = "/state/oscillation"
         return json.dumps(
             {
                 "device": self._device.identifier,
                 "type": "json_patch",
                 "patch": [
-                    {"op": "replace", "path": "/state/oscillate", "value": False}
+                    {"op": "replace", "path": path, "value": False}
                 ],
             }
         )

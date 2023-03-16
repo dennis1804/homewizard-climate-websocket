@@ -1,17 +1,18 @@
 from dataclasses import dataclass
+from typing import Optional
+from dataclasses_json import dataclass_json, Undefined
 
-from dataclasses_json import dataclass_json
 
-
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclass
 class HomeWizardClimateDeviceState:
     power_on: bool
-    mode: str
+    mode: Optional[str]
     current_temperature: int
     target_temperature: int
     fan_speed: int
     oscillate: bool
+    oscillation: bool
     timer: int
     speed: int
     error: list[str]
@@ -33,6 +34,7 @@ def default_state():
             "target_temperature": 0,
             "fan_speed": 0,
             "oscillate": False,
+            "oscillation": False,
             "timer": 0,
             "speed": 1,
             "ext_mode": [],
