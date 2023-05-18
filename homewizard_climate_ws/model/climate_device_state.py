@@ -20,6 +20,7 @@ class HomeWizardClimateDeviceState:
     vent_heat: bool
     silent: bool
     heater: bool
+    swing: bool
     ext_mode: list[str]
     ext_current_temperature: int
     ext_target_temperature: int
@@ -42,6 +43,7 @@ def default_state():
             "vent_heat": False,
             "silent": False,
             "heater": False,
+            "swing": False,
             "error": [],
             "ext_current_temperature": 0,
             "ext_target_temperature": 0,

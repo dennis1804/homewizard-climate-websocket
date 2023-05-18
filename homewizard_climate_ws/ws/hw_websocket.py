@@ -130,8 +130,14 @@ class HomeWizardClimateWebSocket:
     def set_timer(self, timer: int) -> None:
         self._send_message(self._payloads.set_timer(timer))
 
+    def set_target_humidity(self, humidity: int) -> None:
+        self._send_message(self._payloads.set_target_humidity(humidity))
+
     def set_speed(self, speed: int) -> None:
         self._send_message(self._payloads.set_speed(speed))
+
+    def set_swing(self, swing: bool) -> None:
+        self._send_message(self._payloads.set_swing(swing))
 
     def turn_on_heater(self) -> None:
         self._send_message(self._payloads.set_heater())

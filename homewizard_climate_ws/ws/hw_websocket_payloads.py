@@ -85,6 +85,21 @@ class HomeWizardClimateWSPayloads:
             }
         )
 
+    def set_target_humidity(self, humidity: int) -> str:
+        return json.dumps(
+            {
+                "device": self._device.identifier,
+                "type": "json_patch",
+                "patch": [
+                    {
+                        "op": "replace",
+                        "path": "/state/target_humidity",
+                        "value": humidity,
+                    }
+                ],
+            }
+        )
+
     def set_fan_speed(self, speed: int) -> str:
         return json.dumps(
             {
@@ -125,6 +140,17 @@ class HomeWizardClimateWSPayloads:
                 "type": "json_patch",
                 "patch": [
                     {"op": "replace", "path": "/state/mode", "value": mode}
+                ],
+            }
+        )
+
+    def set_swing(self, value: bool) -> str:
+        return json.dumps(
+            {
+                "device": self._device.identifier,
+                "type": "json_patch",
+                "patch": [
+                    {"op": "replace", "path": "/state/swing", "value": value}
                 ],
             }
         )
