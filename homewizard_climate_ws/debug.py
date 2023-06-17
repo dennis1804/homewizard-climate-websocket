@@ -39,7 +39,7 @@ def test_device(api, device):
     ws = HomeWizardClimateWebSocket(api, device)
     ws.connect_in_thread()
 
-
+    time.sleep(5)
     if device.type == HomeWizardClimateDeviceType.INFRAREDHEATER:
         sleep_and_set(ws, 'target_temperature', 20)
 
