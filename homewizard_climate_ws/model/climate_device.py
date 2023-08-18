@@ -15,6 +15,7 @@ class HomeWizardClimateDeviceType(Enum):
     FAN = "fan"
     DEHUMIDIFIER = "dehumidifier"
     AIRCONDITIONER = "airconditioner"
+    AIRCOOLER = "aircooler"
 
 @dataclass_json
 @dataclass
