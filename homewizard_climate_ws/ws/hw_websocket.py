@@ -84,7 +84,10 @@ class HomeWizardClimateWebSocket:
         ]:
             self._socket_status = SocketStatus.INITIALIZING
             self._LOGGER.info(f"Connecting to websocket ({API_WS_PATH})")
-            self._socket_app.run_forever()
+            try:
+                self._socket_app.run_forever()
+            except:
+                self._LOGGER.info(f"cant run_forever: {self._socket_status}")
         else:
             self._LOGGER.info(
                 f"Can not attempt socket connection because of current "

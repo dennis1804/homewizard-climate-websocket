@@ -24,8 +24,8 @@ class HomeWizardClimateDeviceState:
     heater: bool
     swing: bool
     ext_mode: list[str]
-    ext_current_temperature: int
-    ext_target_temperature: int
+    ext_current_temperature: Optional[int]
+    ext_target_temperature: Optional[int]
 
 
 def default_state():
