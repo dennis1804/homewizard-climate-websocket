@@ -42,7 +42,7 @@ class HomeWizardClimateWSPayloads:
             }
         )
 
-    def turn_off_cool(self) -> str:
+    def turn_off(self) -> str:
         return json.dumps(
             {
                 "device": self._device.identifier,
@@ -56,17 +56,15 @@ class HomeWizardClimateWSPayloads:
         return json.dumps(
             {
                 "device": self._device.identifier,
-                "message_id": "turn_on",
                 "type": "json_patch",
                 "patch": [{"op": "replace", "path": "/state/cool", "value": True}],
             }
         )
 
-    def turn_off(self) -> str:
+    def turn_off_cool(self) -> str:
         return json.dumps(
             {
                 "device": self._device.identifier,
-                "message_id": "turn_off",
                 "type": "json_patch",
                 "patch": [{"op": "replace", "path": "/state/cool", "value": False}],
             }
