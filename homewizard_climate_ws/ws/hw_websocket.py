@@ -126,7 +126,7 @@ class HomeWizardClimateWebSocket:
     def turn_off_cool(self) -> None:
         self._send_message(self._payloads.turn_off_cool())
 
-    def set_fan_speed(self, speed: int) -> None:
+    def set_fan_speed(self, speed: str) -> None:
         self._send_message(self._payloads.set_fan_speed(speed))
 
     def set_target_temperature(self, temp: int) -> None:

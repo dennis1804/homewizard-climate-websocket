@@ -118,7 +118,7 @@ class HomeWizardClimateWSPayloads:
             }
         )
 
-    def set_fan_speed(self, speed: int) -> str:
+    def set_fan_speed(self, speed: str) -> str:
         return json.dumps(
             {
                 "device": self._device.identifier,
