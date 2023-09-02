@@ -12,7 +12,7 @@ class HomeWizardClimateDeviceState:
     target_temperature: int
     target_humidity: int
     current_humidity: int
-    fan_speed: int
+    fan_speed: str
     oscillate: bool
     oscillation: bool
     timer: int
@@ -40,7 +40,7 @@ def default_state():
             "target_temperature": 0,
             "target_humidity": 0,
             "current_humidity": 0,
-            "fan_speed": 0,
+            "fan_speed": 'low',
             "oscillate": False,
             "oscillation": False,
             "timer": 0,
