@@ -52,6 +52,24 @@ class HomeWizardClimateWSPayloads:
             }
         )
 
+    def turn_on_cool(self) -> str:
+        return json.dumps(
+            {
+                "device": self._device.identifier,
+                "type": "json_patch",
+                "patch": [{"op": "replace", "path": "/state/cool", "value": True}],
+            }
+        )
+
+    def turn_off_cool(self) -> str:
+        return json.dumps(
+            {
+                "device": self._device.identifier,
+                "type": "json_patch",
+                "patch": [{"op": "replace", "path": "/state/cool", "value": False}],
+            }
+        )
+
     def set_heater(self) -> str:
         return json.dumps(
             {
@@ -100,7 +118,7 @@ class HomeWizardClimateWSPayloads:
             }
         )
 
-    def set_fan_speed(self, speed: int) -> str:
+    def set_fan_speed(self, speed: str) -> str:
         return json.dumps(
             {
                 "device": self._device.identifier,
