@@ -49,13 +49,7 @@ class HomeWizardClimateWebSocket:
         self._disconnect_requested = False
         self._LOGGER = logging.getLogger(f"{__name__}.{self._device.identifier}")
 
-        self._socket_app = websocket.WebSocketApp(
-            API_WS_PATH,
-            on_message=self._on_message,
-            on_open=self._on_open,
-            on_ping=self._on_ping,
-            on_close=self._on_close,
-        )
+        self._socket_app = {}
 
     @property
     def initialized(self) -> SocketStatus:
@@ -84,7 +78,12 @@ class HomeWizardClimateWebSocket:
         ]:
             self._socket_status = SocketStatus.INITIALIZING
             self._LOGGER.info(f"Connecting to websocket ({API_WS_PATH})")
-            self._socket_app.run_forever()
+            try:
+                self._socket_app.run_forever(reconnect=5)
+            except Exception as error:
+                self._socket_app.close()
+                self._socket_app.run_forever(reconnect=5)
+                self._LOGGER.info(f"cant run_forever: {self._socket_status} {error}")
         else:
             self._LOGGER.info(
                 f"Can not attempt socket connection because of current "
@@ -92,9 +91,18 @@ class HomeWizardClimateWebSocket:
             )
 
     def connect_in_thread(self) -> None:
+        self._socket_app = websocket.WebSocketApp(
+            API_WS_PATH,
+            on_message=self._on_message,
+            on_open=self._on_open,
+            on_ping=self._on_ping,
+            on_close=self._on_close,
+        )
         thread = threading.Thread(target=self.connect)
         thread.daemon = True
         thread.start()
+
+
 
     def disconnect(self) -> None:
         self._disconnect_requested = True
